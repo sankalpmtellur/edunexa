@@ -119,6 +119,9 @@ const ScoreCard = () => {
         <Link to="/home">
           <button className="home-button">Back to Home</button>
         </Link>
+        <Link to="/leaderboard">
+          <button className="leaderboard-button">View Leaderboard</button>
+        </Link>
       </div>
     </div>
   );

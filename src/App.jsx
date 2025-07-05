@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage/HomePage';
 import Quiz from './pages/HomePage/Quiz';
 import ScoreCard from './pages/HomePage/ScoreCard';
+import Leaderboard from './pages/HomePage/Leaderboard';
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,10 @@ function App() {
       <Route
         path="/scorecard"
         element={isLoggedIn ? <ScoreCard /> : <Navigate to="/login" replace />}
+      />
+      <Route
+        path="/leaderboard"
+        element={isLoggedIn ? <Leaderboard /> : <Navigate to="/login" replace />}
       />
     </Routes>
   );

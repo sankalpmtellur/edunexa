@@ -134,6 +134,22 @@
   text-align: center;
 }
 
+.leaderboard-button {
+  background-color: #1976d2;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.leaderboard-button:hover {
+  background-color: #1565c0;
+}
+
 @media (max-width: 768px) {
   .scorecard-container {
     padding: 24px 10px;
