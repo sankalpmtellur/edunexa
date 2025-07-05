@@ -5,8 +5,16 @@ import UserProfileBar from '../../components/UserProfileBar';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const rawName = localStorage.getItem('fullname') || 'User';
-  const username = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+
+  let username = 'User';
+  try {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const rawName = user?.name || 'User';
+    username = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+  } catch (err) {
+    console.warn('Invalid user in localStorage');
+  }
+
   const [difficulty, setDifficulty] = useState('Easy');
   const [open, setOpen] = useState(false);
 

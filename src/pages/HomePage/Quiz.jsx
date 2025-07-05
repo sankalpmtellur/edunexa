@@ -76,6 +76,8 @@ const Quiz = () => {
           correctAnswers: questions.map(q => q.answer),
           userAnswers: updatedAnswers,
           totalQuestions: questions.length,
+          difficulty: difficulty,
+          timeUsed: time // ✅ Send timeUsed to ScoreCard
         }
       });
     }

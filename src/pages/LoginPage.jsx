@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode';
 import './LoginPage.css';
 
 function LoginPage() {
@@ -25,7 +23,6 @@ function LoginPage() {
     e.preventDefault();
     const { fullName, email, password } = userData;
 
-    // Basic input validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!fullName.trim() || !email.trim() || !password.trim()) {
       return alert('Please fill all fields');
@@ -34,29 +31,19 @@ function LoginPage() {
       return alert('Please enter a valid email');
     }
 
-    // Store user info for sample login
-    localStorage.setItem('fullname', fullName.trim());
-    localStorage.setItem('email', email.trim());
-    localStorage.removeItem('profilePic'); // Fallback will be used
+    localStorage.setItem(
+      'user',
+      JSON.stringify({
+        name: fullName.trim(),
+        email: email.trim(),
+        picture: null,
+      })
+    );
 
     setLoading(true);
     setTimeout(() => {
       navigate('/home');
-    }, 300); // slight delay for UX
-  };
-
-  const handleGoogleLoginSuccess = (credentialResponse) => {
-    const decoded = jwtDecode(credentialResponse.credential);
-
-    localStorage.setItem('fullname', decoded.name);
-    localStorage.setItem('email', decoded.email);
-    localStorage.setItem('profilePic', decoded.picture);
-
-    navigate('/home');
-  };
-
-  const handleGoogleLoginFailure = () => {
-    alert('Google Sign-In Failed. Please try again.');
+    }, 300);
   };
 
   return (
@@ -97,13 +84,6 @@ function LoginPage() {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
-
-        <div className="or-divider">or</div>
-
-        <GoogleLogin
-          onSuccess={handleGoogleLoginSuccess}
-          onError={handleGoogleLoginFailure}
-        />
       </div>
     </div>
   );

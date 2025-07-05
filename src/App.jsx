@@ -8,13 +8,12 @@ import ScoreCard from './pages/HomePage/ScoreCard';
 
 function App() {
   const location = useLocation();
-  const isLoggedIn = localStorage.getItem('fullname');
+  const isLoggedIn = localStorage.getItem('user');
 
   return (
     <Routes key={location.pathname}>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
-
       <Route
         path="/home"
         element={isLoggedIn ? <HomePage /> : <Navigate to="/login" replace />}
