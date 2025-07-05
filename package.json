@@ -10,7 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://yourusername.github.io/edunexa",
+  "homepage": "https://sankalpmtellur.github.io/EduNexa",
   "dependencies": {
     "@react-oauth/google": "^0.12.2",
     "jwt-decode": "^4.0.0",
