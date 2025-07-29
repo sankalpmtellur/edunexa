@@ -8,6 +8,42 @@ import ScoreCard from './pages/HomePage/ScoreCard';
 import Leaderboard from './pages/HomePage/Leaderboard';
 import { supabase } from './supabaseClient';
 
+// Auth Callback Component
+const AuthCallback = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleAuthCallback = async () => {
+      const { data, error } = await supabase.auth.getSession();
+      
+      if (error) {
+        console.error('Auth callback error:', error);
+        navigate('/login');
+        return;
+      }
+
+      if (data.session) {
+        // Store user data
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            name: data.session.user.user_metadata.full_name || data.session.user.email,
+            email: data.session.user.email,
+            picture: data.session.user.user_metadata.avatar_url || null,
+          })
+        );
+        navigate('/home', { replace: true });
+      } else {
+        navigate('/login');
+      }
+    };
+
+    handleAuthCallback();
+  }, [navigate]);
+
+  return <div>Processing authentication...</div>;
+};
+
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -75,6 +111,7 @@ function App() {
     <Routes key={location.pathname}>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/auth/callback" element={<AuthCallback />} />
       <Route path="/home" element={isLoggedIn ? <HomePage /> : <Navigate to="/login" replace />} />
       <Route path="/quiz/:difficulty" element={isLoggedIn ? <Quiz /> : <Navigate to="/login" replace />} />
       <Route path="/scorecard" element={isLoggedIn ? <ScoreCard /> : <Navigate to="/login" replace />} />
