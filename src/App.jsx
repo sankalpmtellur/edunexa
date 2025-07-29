@@ -73,8 +73,8 @@ function App() {
         localStorage.removeItem('user');
         setIsLoggedIn(false);
 
-        // ✅ Only redirect to login if not already on login page
-        if (location.pathname !== '/login') {
+        // Only redirect to login if on protected routes, not on landing page
+        if (location.pathname !== '/login' && location.pathname !== '/') {
           navigate('/login', { replace: true });
         }
       }
@@ -98,7 +98,10 @@ function App() {
       } else {
         localStorage.removeItem('user');
         setIsLoggedIn(false);
-        navigate('/login', { replace: true });
+        // Only redirect to login if not on landing page
+        if (location.pathname !== '/') {
+          navigate('/login', { replace: true });
+        }
       }
     });
 
