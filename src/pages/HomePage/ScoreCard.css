@@ -99,6 +99,46 @@
   color: #c0392b;
 }
 
+/* ===== Leaderboard Preview ===== */
+.leaderboard-preview {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f9fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.leaderboard-preview h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1d3557;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.leaderboard-preview ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-preview li {
+  font-size: 1rem;
+  padding: 6px 0;
+  color: #333;
+}
+
+/* ===== Feedback Message ===== */
+.feedback-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+/* ===== Buttons ===== */
 .buttons {
   display: flex;
   justify-content: center;
@@ -108,7 +148,9 @@
 }
 
 .retry-button,
-.home-button {
+.home-button,
+.leaderboard-button,
+.share-button {
   padding: 12px 28px;
   font-size: 1rem;
   font-weight: 600;
@@ -118,38 +160,35 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .retry-button:hover,
-.home-button:hover {
+.home-button:hover,
+.leaderboard-button:hover,
+.share-button:hover {
   background-color: #0056b3;
-}
-
-.scorecard-container h2 {
-  color: #e74c3c;
-  text-align: center;
-}
-
-.scorecard-container p {
-  text-align: center;
 }
 
 .leaderboard-button {
   background-color: #1976d2;
-  color: white;
-  padding: 0.7rem 1.5rem;
-  margin-top: 1rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 .leaderboard-button:hover {
   background-color: #1565c0;
 }
 
+.share-button {
+  background-color: #10b981;
+}
+
+.share-button:hover {
+  background-color: #059669;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .scorecard-container {
     padding: 24px 10px;
@@ -182,7 +221,9 @@
   }
 
   .retry-button,
-  .home-button {
+  .home-button,
+  .leaderboard-button,
+  .share-button {
     width: 100%;
     text-align: center;
   }

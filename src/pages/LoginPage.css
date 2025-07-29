@@ -1,128 +1,176 @@
-/* LoginPage.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #c0f7ff, #e0dfff);
-}
-
-.login-container {
-  min-height: 100dvh;
+  background: linear-gradient(135deg, #d4f1f4, #edf6f9);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  padding: 20px;
 }
 
 .login-box {
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 16px;
-  padding: 40px 30px;
+  background: white;
+  border-radius: 12px;
+  padding: 35px 28px;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  max-width: 420px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   width: 100%;
-  animation: fadeInUp 0.8s ease forwards;
+  max-width: 350px;
+  animation: fadeInUp 0.5s ease;
+}
+
+.login-logo {
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 16px;
+  object-fit: cover;
 }
 
 .login-title {
-  font-size: 32px;
-  margin-bottom: 24px;
+  font-size: 26px;
+  margin-bottom: 20px;
   color: #004d40;
+  font-weight: 600;
 }
 
 .input-box {
   width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 16px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 6px;
+  font-size: 14px;
   outline: none;
   transition: 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .input-box:focus {
   border-color: #00bfa5;
-  box-shadow: 0 0 6px rgba(0, 191, 165, 0.3);
+  box-shadow: 0 0 4px rgba(0, 191, 165, 0.3);
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #0284c7;
+  cursor: pointer;
+}
+
+.login-button,
+.google-button {
+  width: 100%;
+  padding: 11px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .login-button {
-  width: 100%;
-  padding: 12px;
   background-color: #00bfa5;
   color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 191, 165, 0.2);
+  margin-top: 8px;
 }
 
 .login-button:hover {
   background-color: #009688;
-  transform: translateY(-2px);
+}
+
+.google-button {
+  background-color: white;
+  color: #555;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+}
+
+.google-button:hover {
+  background-color: #f1f1f1;
 }
 
 .or-divider {
-  margin: 20px 0 12px;
-  font-size: 14px;
+  margin: 18px 0 10px;
+  font-size: 13px;
   color: #555;
   text-transform: uppercase;
+}
+
+.switch-text {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #555;
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: #0284c7;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.switch-button:hover {
+  text-decoration: underline;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .login-box {
-    padding: 30px 20px;
-  }
-
-  .login-title {
-    font-size: 26px;
-  }
-
-  .input-box {
-    font-size: 14px;
-  }
-
-  .login-button {
-    font-size: 15px;
-  }
-}
-
 @media (max-width: 480px) {
+  .login-box {
+    padding: 25px 20px;
+    max-width: 300px;
+  }
+
   .login-title {
     font-size: 22px;
   }
 
-  .input-box {
-    font-size: 13px;
-    padding: 10px 12px;
-  }
-
-  .login-button {
+  .login-button,
+  .google-button {
     font-size: 14px;
     padding: 10px;
+  }
+
+  .login-logo {
+    width: 60px;
+    height: 60px;
   }
 }

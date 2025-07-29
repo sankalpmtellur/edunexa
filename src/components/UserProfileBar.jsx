@@ -7,10 +7,6 @@ const UserProfileBar = () => {
 
   const user = JSON.parse(localStorage.getItem('user'));
   const username = user?.name || 'User';
-  const profilePic =
-    user?.picture && user.picture !== 'null'
-      ? user.picture
-      : '/profile.webp';
 
   const handleLogout = () => {
     localStorage.clear();
@@ -29,18 +25,18 @@ const UserProfileBar = () => {
 
   return (
     <div className="profile-bar" ref={dropdownRef}>
-      <span className="user-name">{username}</span>
-      <div
-        className="profile-wrapper"
+      <span
+        className="user-name"
         onClick={() => setShowDropdown(!showDropdown)}
       >
-        <img src={profilePic} alt="Profile" className="profile-pic" />
-        {showDropdown && (
-          <div className="profile-dropdown">
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        )}
-      </div>
+        {username}
+      </span>
+
+      {showDropdown && (
+        <div className="profile-dropdown">
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      )}
     </div>
   );
 };

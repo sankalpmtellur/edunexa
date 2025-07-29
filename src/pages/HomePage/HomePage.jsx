@@ -2,23 +2,15 @@ import React, { useState } from 'react';
 import './HomePage.css';
 import { useNavigate } from 'react-router-dom';
 import UserProfileBar from '../../components/UserProfileBar';
+import logo from '/logo.webp';
 
 const HomePage = () => {
   const navigate = useNavigate();
-
-  let username = 'User';
-  try {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const rawName = user?.name || 'User';
-    username = rawName.charAt(0).toUpperCase() + rawName.slice(1);
-  } catch (err) {
-    console.warn('Invalid user in localStorage');
-  }
-
-  const [difficulty, setDifficulty] = useState('Easy');
+  const [difficulty, setDifficulty] = useState('');
   const [open, setOpen] = useState(false);
 
   const handleStart = () => {
+    console.log("🚀 Navigating to quiz with difficulty:", difficulty);
     navigate(`/quiz/${difficulty.toLowerCase()}`);
   };
 
@@ -27,14 +19,20 @@ const HomePage = () => {
       <UserProfileBar />
 
       <div className="home-content">
-        <h1>Welcome, {username}!</h1>
-        <p>Get ready to test your math skills!</p>
+        <img src={logo} alt="EduNexa Logo" className="home-logo" />
+        <h1>
+          Welcome to <span className="brand-name">EduNexa</span>
+        </h1>
+        <p>Sharpen your math skills with fun, interactive quizzes!</p>
 
         <div className="dropdown-container">
           <label>Select Difficulty:</label>
           <div className="custom-dropdown">
-            <div className="dropdown-selected" onClick={() => setOpen(!open)}>
-              {difficulty}
+            <div
+              className="dropdown-selected"
+              onClick={() => setOpen(!open)}
+            >
+              {difficulty || 'Select'}
               <span className="arrow">&#9662;</span>
             </div>
             {open && (
@@ -56,7 +54,11 @@ const HomePage = () => {
           </div>
         </div>
 
-        <button className="start-button" onClick={handleStart}>
+        <button
+          className="start-button"
+          disabled={!difficulty}
+          onClick={handleStart}
+        >
           Start Quiz
         </button>
       </div>

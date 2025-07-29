@@ -1,20 +1,22 @@
-/* LandingPage.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #c0f7ff, #e0dfff);
+  background-color: #f8fafc;
   height: 100%;
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .landing-container {
-  min-height: 100dvh; /* 👈 Fixes mobile height issues */
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,64 +24,82 @@ html, body {
 }
 
 .landing-box {
-  background: rgba(255, 255, 255, 0.25);
+  background: #ffffff;
   border-radius: 16px;
-  padding: 50px 30px;
+  padding: 50px 36px;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 6px 18px rgb(0, 0, 0, 0.08);
   max-width: 460px;
   width: 100%;
-  animation: fadeInUp 0.8s ease forwards;
+  animation: fadeIn 0.6s ease;
+}
+
+.landing-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border: 2px solid black;
+  border-radius: 120px;
+  margin-bottom: 16px;
+  animation: logoBounce 1.2s ease;
 }
 
 .landing-title {
   font-size: 42px;
   font-weight: 700;
-  color: #004d40;
+  color: #0284c7;
   margin-bottom: 12px;
 }
 
 .landing-tagline {
   font-size: 18px;
-  color: #333;
+  color: #475569;
   margin-bottom: 28px;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .start-button {
-  background: #00bfa5;
+  background: #0284c7;
   color: white;
   padding: 12px 30px;
   font-size: 16px;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(0, 191, 165, 0.3);
+  box-shadow: 0 4px 12px rgb(2, 132, 199, 0.2);
 }
 
 .start-button:hover {
-  background: #009688;
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 6px 20px rgba(0, 150, 136, 0.4);
+  background-color: #0369a1;
+  box-shadow: 0 6px 18px rgb(3, 105, 161, 0.3);
 }
 
-/* Fade animation */
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Responsive: Tablet */
+@keyframes logoBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @media (max-width: 768px) {
   .landing-title {
     font-size: 32px;
@@ -90,11 +110,15 @@ html, body {
   }
 
   .landing-box {
-    padding: 40px 20px;
+    padding: 40px 24px;
+  }
+
+  .landing-logo {
+    width: 80px;
+    height: 80px;
   }
 }
 
-/* Responsive: Mobile */
 @media (max-width: 480px) {
   .landing-title {
     font-size: 26px;
@@ -105,11 +129,12 @@ html, body {
   }
 
   .start-button {
+    width: 100%;
     padding: 10px 24px;
     font-size: 15px;
   }
 
   .landing-box {
-    padding: 30px 18px;
+    padding: 32px 18px;
   }
 }
